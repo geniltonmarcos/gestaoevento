@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	template="../../template/template_padrao.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+
+		<div class="panel panel-default">
+			<div class="panel-heading text-left">
+				<h4>Eventos</h4>
+			</div>
+			<div class="panel-body">
+
+				<h:form prependId="false">
+					<t:saveState value="#{eventoBean.eventos}" />
+
+					<div class="panel">
+
+						<div class="panel-body">
+
+							<div class="input-group">
+								<h:selectOneMenu id="status" label="Status"
+										styleClass="form-control">
+										<f:selectItem itemLabel="" itemValue="" />
+										<f:selectItem itemLabel="Novo" itemValue="N" />
+										<f:selectItem itemLabel="Solicitado" itemValue="S" />
+										<f:selectItem itemLabel="Autorizado" itemValue="A" />
+									</h:selectOneMenu>
+
+								<span class="input-group-btn"> <h:commandButton
+										value="Listar" immediate="true" styleClass="btn btn-default"
+										action="#{eventoBean.list}">
+										<f:ajax render="tabela" />
+									</h:commandButton> <h:commandButton value="Novo" immediate="true"
+										styleClass="btn btn-primary"
+										action="#{eventoBean.preparaAdicao}">
+									</h:commandButton>
+								</span>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="panel">
+						<div class="panel-body">
+							<p:dataTable id="tabela" value="#{eventoBean.eventos}"
+								var="evento" rowClasses="odd, even"
+								emptyMessage="Nenhum Evento Encontrado" paginator="true"
+								rows="10" paginatorPosition="bottom"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="10,20" styleClass="table">
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Descrição" />
+									</f:facet>
+									#{evento.descricao}
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Status" />
+									</f:facet>
+									
+									<h:selectOneMenu 
+										id="tipo" 
+										value="#{evento.status}"
+										label="Status" 
+										disabled="true"
+										styleClass="form-control">
+										<f:selectItem itemLabel="Novo" itemValue="N" />
+										<f:selectItem itemLabel="Solicitado" itemValue="S" />
+										<f:selectItem itemLabel="Autorizado" itemValue="A" />
+									</h:selectOneMenu>
+									
+									
+								</p:column>
+								
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Local" />
+									</f:facet>
+									#{evento.localidade.local}
+								</p:column>
+								
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Pessoa" />
+									</f:facet>
+									#{evento.pessoa.nome}
+								</p:column>
+																
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="" />
+									</f:facet>
+	
+									<h:commandButton value="Editar"
+										action="#{eventoBean.preparaAlteracao()}"
+										styleClass="btn btn-primary btn-sm">
+										<f:param value="#{evento.id}" name="id" />
+									</h:commandButton>
+									 |  
+									<h:commandButton action="#{eventoBean.delete}" value="Remover"
+										onclick="return confirm('Deseja realmente remover este Evento?');"
+										styleClass="btn btn-primary btn-sm">
+										<f:ajax render="@form" />
+										<f:setPropertyActionListener target="#{eventoBean.evento}"
+											value="#{evento}" />
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+						</div>
+					</div>
+
+
+				</h:form>
+			</div>
+		</div>
+
+
+
+	</ui:define>
+</ui:composition>

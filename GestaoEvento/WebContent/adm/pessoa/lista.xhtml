@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	template="../../template/template_padrao.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+		<div class="panel panel-default">
+			<div class="panel-heading text-left">
+				<h4>Pessoas - Atendentes para Eventos</h4>
+			</div>
+			<div class="panel-body">
+				<h:form prependId="false">
+					<t:saveState value="#{pessoaBean.pessoas}" />
+
+					<div class="panel">
+						<div class="panel-body">
+							<div class="input-group">
+								<p:inputText title="Preencha o Nome"
+									placeholder="Preencha o Nome" styleClass="form-control"
+									id="nome">
+									<p:watermark for="nome" value="Preencha o Nome" id="watermark" />
+								</p:inputText>
+
+								<span class="input-group-btn"> <h:commandButton
+										value="Listar" immediate="true" styleClass="btn btn-default"
+										action="#{pessoaBean.list}">
+										<f:ajax render="tabela" />
+									</h:commandButton> <h:commandButton value="Novo" immediate="true"
+										styleClass="btn btn-primary"
+										action="#{pessoaBean.preparaAdicao}">
+									</h:commandButton>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="panel">
+						<div class="panel-body">
+							<p:dataTable id="tabela" value="#{pessoaBean.pessoas}"
+								var="pessoa" rowClasses="odd, even"
+								emptyMessage="Nenhuma Pessoa Encontrado" 
+								paginator="true"
+								rows="10" paginatorPosition="bottom"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="10,20" 
+								styleClass="table">
+
+								<p:column>
+										<f:facet name="header">
+											<h:outputText value="Nome" />
+										</f:facet>
+									#{pessoa.nome}
+								</p:column>
+								<p:column>
+										<f:facet name="header">
+											<h:outputText value="Cargo" />
+										</f:facet>
+									#{pessoa.cargo}
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Ativo" />
+									</f:facet>
+									<h:selectBooleanCheckbox disabled="true" value="#{pessoa.ativo}" /> 
+								</p:column>
+	
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="" />
+									</f:facet>
+	
+									<h:commandButton value="Editar"
+										action="#{pessoaBean.preparaAlteracao()}"
+										styleClass="btn btn-primary btn-sm">
+										<f:param value="#{pessoa.id}" name="id" />
+									</h:commandButton>
+									 |  
+									<h:commandButton action="#{pessoaBean.delete}" value="Remover"
+										onclick="return confirm('Deseja realmente remover esta Usuario?');"
+										styleClass="btn btn-primary btn-sm">
+										<f:ajax render="@form" />
+										<f:setPropertyActionListener target="#{pessoaBean.pessoa}"
+											value="#{pessoa}" />
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+						</div>
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

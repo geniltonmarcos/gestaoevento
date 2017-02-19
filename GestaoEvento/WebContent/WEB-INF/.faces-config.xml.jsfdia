@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#adm#usuario#lista.xhtml"
+  PATH="/adm/usuario/lista.xhtml" SHAPE="48,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#usuario#lista.xhtml:0" NAME="item"
+   PATH="/adm/usuario/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="form::#adm#usuario#formulario.xhtml"
+    NAME="output" PATH="/adm/usuario/formulario.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#usuario#formulario.xhtml" TITLE="form" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#adm#usuario#lista.xhtml:1" NAME="item1"
+   PATH="/adm/usuario/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#usuario#lista.xhtml"
+    NAME="output" PATH="/adm/usuario/lista.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#usuario#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#usuario#formulario.xhtml"
+  PATH="/adm/usuario/formulario.xhtml" SHAPE="272,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#usuario#formulario.xhtml:0" NAME="item"
+   PATH="/adm/usuario/formulario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#usuario#lista.xhtml"
+    NAME="output" PATH="/adm/usuario/lista.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#usuario#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#pessoa#lista.xhtml"
+  PATH="/adm/pessoa/lista.xhtml" SHAPE="48,273,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#pessoa#lista.xhtml:0" NAME="item"
+   PATH="/adm/pessoa/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="form::#adm#pessoa#formulario.xhtml"
+    NAME="output" PATH="/adm/pessoa/formulario.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#pessoa#formulario.xhtml" TITLE="form" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#adm#pessoa#lista.xhtml:1" NAME="item1"
+   PATH="/adm/pessoa/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#pessoa#lista.xhtml" NAME="output"
+    PATH="/adm/pessoa/lista.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#pessoa#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#pessoa#formulario.xhtml"
+  PATH="/adm/pessoa/formulario.xhtml" SHAPE="272,289,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#pessoa#formulario.xhtml:0" NAME="item"
+   PATH="/adm/pessoa/formulario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#pessoa#lista.xhtml" NAME="output"
+    PATH="/adm/pessoa/lista.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#pessoa#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#localidade#lista.xhtml"
+  PATH="/adm/localidade/lista.xhtml" SHAPE="48,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#localidade#lista.xhtml:0" NAME="item"
+   PATH="/adm/localidade/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="form::#adm#localidade#formulario.xhtml"
+    NAME="output" PATH="/adm/localidade/formulario.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#localidade#formulario.xhtml" TITLE="form" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#adm#localidade#lista.xhtml:1" NAME="item1"
+   PATH="/adm/localidade/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#localidade#lista.xhtml"
+    NAME="output" PATH="/adm/localidade/lista.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#localidade#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#localidade#formulario.xhtml"
+  PATH="/adm/localidade/formulario.xhtml" SHAPE="272,433,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#localidade#formulario.xhtml:0"
+   NAME="item" PATH="/adm/localidade/formulario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#localidade#lista.xhtml"
+    NAME="output" PATH="/adm/localidade/lista.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#localidade#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#equipamento#lista.xhtml"
+  PATH="/adm/equipamento/lista.xhtml" SHAPE="48,561,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#equipamento#lista.xhtml:0" NAME="item"
+   PATH="/adm/equipamento/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="form::#adm#equipamento#formulario.xhtml"
+    NAME="output" PATH="/adm/equipamento/formulario.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#equipamento#formulario.xhtml" TITLE="form" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#adm#equipamento#lista.xhtml:1" NAME="item1"
+   PATH="/adm/equipamento/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#equipamento#lista.xhtml"
+    NAME="output" PATH="/adm/equipamento/lista.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#equipamento#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#equipamento#formulario.xhtml"
+  PATH="/adm/equipamento/formulario.xhtml" SHAPE="272,577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#equipamento#formulario.xhtml:0"
+   NAME="item" PATH="/adm/equipamento/formulario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#equipamento#lista.xhtml"
+    NAME="output" PATH="/adm/equipamento/lista.xhtml" SHAPE="-1,16"
+    TARGET="rules:#adm#equipamento#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="83,146,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#index.xhtml:0" NAME="item"
+   PATH="/index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="index::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="index" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="form::#adm#index.xhtml" NAME="output1"
+    PATH="/adm/index.xhtml" TARGET="rules:#adm#index.xhtml" TITLE="form" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#index.xhtml" PATH="/adm/index.xhtml"
+  SHAPE="282,152,0,0" model-entity="JSFProcessGroup" persistent="true"/>
+ <PROCESS-ITEM NAME="rules:#adm#evento#lista.xhtml"
+  PATH="/adm/evento/lista.xhtml" SHAPE="304,321,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#evento#lista.xhtml:0" NAME="item"
+   PATH="/adm/evento/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="form::#adm#evento#formulario.xhtml"
+    NAME="output" PATH="/adm/evento/formulario.xhtml"
+    TARGET="rules:#adm#evento#formulario.xhtml" TITLE="form" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#adm#evento#lista.xhtml:1" NAME="item1"
+   PATH="/adm/evento/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#evento#lista.xhtml" NAME="output"
+    PATH="/adm/evento/lista.xhtml"
+    TARGET="rules:#adm#evento#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#evento#formulario.xhtml"
+  PATH="/adm/evento/formulario.xhtml" SHAPE="48,657,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#evento#formulario.xhtml:0" NAME="item"
+   PATH="/adm/evento/formulario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#evento#lista.xhtml" NAME="output"
+    PATH="/adm/evento/lista.xhtml"
+    TARGET="rules:#adm#evento#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#reserva#lista.xhtml"
+  PATH="/adm/reserva/lista.xhtml" SHAPE="48,881,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#reserva#lista.xhtml:0" NAME="item"
+   PATH="/adm/reserva/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="form::#adm#reserva#formulario.xhtml"
+    NAME="output" PATH="/adm/reserva/formulario.xhtml"
+    TARGET="rules:#adm#reserva#formulario.xhtml" TITLE="form" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+  <PROCESS-ITEM ID="rules:#adm#reserva#lista.xhtml:1" NAME="item1"
+   PATH="/adm/reserva/lista.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#reserva#lista.xhtml"
+    NAME="output" PATH="/adm/reserva/lista.xhtml"
+    TARGET="rules:#adm#reserva#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#adm#reserva#formulario.xhtml"
+  PATH="/adm/reserva/formulario.xhtml" SHAPE="240,1009,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#adm#reserva#formulario.xhtml:0" NAME="item"
+   PATH="/adm/reserva/formulario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="list::#adm#reserva#lista.xhtml"
+    NAME="output" PATH="/adm/reserva/lista.xhtml"
+    TARGET="rules:#adm#reserva#lista.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>

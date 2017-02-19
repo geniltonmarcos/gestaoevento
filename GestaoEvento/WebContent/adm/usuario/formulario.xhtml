@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.org/ui"
+	template="../../template/template_padrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:form class="form-horizontal" role="form" prependId="false">
+			<div class="panel panel-default">
+				<div class="panel-heading text-left">
+					<h4>Usuários</h4>
+				</div>
+				<div class="panel-body">
+					<t:saveState value="#{usuarioBean.usuario}" />
+
+					<div class="col-sm-12">
+						<label class="col-sm-2">Nome</label>
+						<div class="col-sm-4">
+							<p:inputText id="nome" value="#{usuarioBean.usuario.nome}"
+								label="Nome" required="true"
+								validatorMessage="Informe no Máximo 100 caractéres"
+								styleClass="form-control">
+								<p:watermark for="nome" value="Nome" id="watermarknome" />
+								<f:validateLength maximum="100"></f:validateLength>
+							</p:inputText>
+						</div>
+
+						<label class="col-sm-2">Login</label>
+						<div class="col-sm-4">
+							<p:inputText id="login" value="#{usuarioBean.usuario.login}"
+								label="Login" required="true"
+								validatorMessage="Informe no Máximo 100 caractéres"
+								styleClass="form-control">
+								<p:watermark for="login" value="Login" id="watermarklogin" />
+								<f:validateLength maximum="100"></f:validateLength>
+							</p:inputText>
+						</div>
+
+
+						<label class="col-sm-2">Email</label>
+						<div class="col-sm-4">
+							<p:inputText
+								id="email" value="#{usuarioBean.usuario.email}"
+								label="Email" 
+								validatorMessage="Email: Inválido"
+								styleClass="form-control">
+								<p:watermark for="email" value="Email" id="watermarkmail" />
+								<f:validateLength maximum="100"></f:validateLength>
+								<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+							</p:inputText>
+						</div>
+
+						<label class="col-sm-2">Senha</label>
+						<div class="col-sm-4">
+							<p:password id="senha" value="#{usuarioBean.usuario.senha}"
+								label="Senha" required="true"
+								validatorMessage="Informe no Máximo 100 caractéres"
+								styleClass="form-control">
+								<f:validateLength maximum="100"></f:validateLength>
+								<p:watermark for="senha" value="Senha" id="watermarksenha" />
+							</p:password>
+						</div>
+
+						<label class="col-sm-2">Tipo</label>
+						<div class="col-sm-4">
+							<h:selectOneMenu id="tipo" value="#{usuarioBean.usuario.tipo}"
+								required="true" validatorMessage="Escolha uma opção"
+								label="Utilização" styleClass="form-control">
+								<f:selectItem itemLabel="Selecione" itemValue="" />
+								<f:selectItem itemLabel="Administrador" itemValue="A" />
+								<f:selectItem itemLabel="Professor" itemValue="P" />
+							</h:selectOneMenu>
+
+						</div>
+						<label class="col-sm-2">Status</label>
+						<div class="col-sm-4">
+							<h:selectOneMenu 
+								id="status" 
+								value="#{usuarioBean.usuario.status}"
+								label="Status" 
+								styleClass="form-control">
+								<f:selectItem itemLabel="Ativo" itemValue="A" />
+								<f:selectItem itemLabel="Inativo" itemValue="I" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-2">
+							<h:commandButton value="Voltar" class="btn btn-success"
+								action="list" immediate="true" />
+						</div>
+						<div class="col-sm-2 ">
+							<h:commandButton value="Salvar" action="#{usuarioBean.save}"
+								class="btn btn-default">
+								<f:ajax execute="@form" render=":mensagens" />
+								<f:param value="#{usuario.id}" name="id" />
+							</h:commandButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

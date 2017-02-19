@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.org/ui"
+	template="../../template/template_padrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:form class="form-horizontal" role="form" prependId="false">
+			<div class="panel panel-default">
+				<div class="panel-heading text-left">
+					<h4>Reservas</h4>
+				</div>
+				<div class="panel-body">
+					<t:saveState value="#{reservaBean.reserva}" />
+
+					<div class="col-sm-12">
+						<label class="col-sm-2">Status</label>
+						<div class="col-sm-4">
+							<h:selectOneMenu 
+								id="tipo" 
+								value="#{reservaBean.reserva.status}"
+								label="Status" 
+								disabled="true"
+								styleClass="form-control">
+								<f:selectItem itemLabel="Ativo" itemValue="A" />
+								<f:selectItem itemLabel="Inativo" itemValue="I" />
+							</h:selectOneMenu>
+						</div>
+
+						<label class="col-sm-2">Data</label>
+						<div class="col-sm-4">
+							<p:calendar id="data" value="#{reservaBean.reserva.data}"
+								label="Data" 
+								required="true"
+								styleClass="form-control">
+							</p:calendar>
+						</div>
+						
+						<label class="col-sm-2">Local</label>
+						<div class="col-sm-4">
+							<h:selectOneMenu 	required="true" 
+												label="Local"
+												value="#{reservaBean.reserva.evento}"
+												converter="eventoConverter"
+												styleClass="form-control">
+								<f:selectItems value="#{eventoBean.eventoItens}"/>  
+							</h:selectOneMenu>
+						</div>
+						
+					</div>
+
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-2">
+							<h:commandButton value="Voltar" class="btn btn-success"
+								action="list" immediate="true" />
+						</div>
+						<div class="col-sm-2 ">
+							<h:commandButton value="Salvar" action="#{reservaBean.save}"
+								class="btn btn-default">
+								<f:ajax execute="@form" render=":mensagens" />
+								<f:param value="#{reserva.id}" name="id" />
+							</h:commandButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

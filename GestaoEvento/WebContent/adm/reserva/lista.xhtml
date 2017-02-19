@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	template="../../template/template_padrao.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="conteudo">
+
+		<div class="panel panel-default">
+			<div class="panel-heading text-left">
+				<h4>Reservas</h4>
+			</div>
+			<div class="panel-body">
+
+				<h:form prependId="false">
+					<t:saveState value="#{reservaBean.reservas}" />
+
+					<div class="panel">
+
+						<div class="panel-body">
+
+							<div class="input-group">
+
+								<h:selectOneMenu id="status" value="#{reserva.status}"
+										label="Status" styleClass="form-control">
+										<f:selectItem itemLabel="" itemValue="" />
+										<f:selectItem itemLabel="Inativa" itemValue="I" />
+										<f:selectItem itemLabel="Ativa" itemValue="A" />
+									</h:selectOneMenu>
+
+								<span class="input-group-btn">
+									<h:commandButton
+										value="Listar" immediate="true" styleClass="btn btn-default"
+										action="#{reservaBean.list}">
+										<f:ajax render="tabela" />
+									</h:commandButton> 
+									<h:commandButton value="Novo" immediate="true"
+										styleClass="btn btn-primary"
+										action="#{reservaBean.preparaAdicao}">
+									</h:commandButton>
+								</span>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="panel">
+						<div class="panel-body">
+							<p:dataTable id="tabela" value="#{reservaBean.reservas}"
+								var="reserva" rowClasses="odd, even"
+								emptyMessage="Nenhuma Reserva Encontrada" paginator="true"
+								rows="10" paginatorPosition="bottom"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								rowsPerPageTemplate="10,20" styleClass="table">
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Evento" />
+									</f:facet>
+									#{reserva.evento.descricao}
+								</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Status" />
+									</f:facet>
+									
+									<h:selectOneMenu id="tipo" value="#{reserva.status}"
+										label="Status" disabled="true" styleClass="form-control">
+										<f:selectItem itemLabel="Inativa" itemValue="I" />
+										<f:selectItem itemLabel="Ativa" itemValue="A" />
+									</h:selectOneMenu>
+
+								</p:column>
+								
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Status do Evento" />
+									</f:facet>
+									
+									<h:selectOneMenu id="tipoEvento" value="#{reserva.evento.status}"
+										label="Status" disabled="true" styleClass="form-control">
+										<f:selectItem itemLabel="Novo" itemValue="N" />
+										<f:selectItem itemLabel="Solicitado" itemValue="S" />
+										<f:selectItem itemLabel="Autorizado" itemValue="A" />
+									</h:selectOneMenu>
+
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Data" />
+									</f:facet>
+									<h:outputText value="#{reserva.data}">
+									  <f:convertDateTime type="date" pattern="dd/MM/yyyy"/>
+									</h:outputText>
+																		
+								</p:column>
+
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="" />
+									</f:facet>
+
+									<h:commandButton value="Editar"
+										action="#{reservaBean.preparaAlteracao()}"
+										styleClass="btn btn-primary btn-sm">
+										<f:param value="#{reserva.id}" name="id" />
+									</h:commandButton>
+									 |  
+									<h:commandButton action="#{reservaBean.delete}" value="Remover"
+										onclick="return confirm('Deseja realmente remover este Reserva?');"
+										styleClass="btn btn-primary btn-sm">
+										<f:ajax render="@form" />
+										<f:setPropertyActionListener target="#{reservaBean.reserva}"
+											value="#{reserva}" />
+									</h:commandButton>
+								</p:column>
+							</p:dataTable>
+						</div>
+					</div>
+
+
+				</h:form>
+			</div>
+		</div>
+
+
+
+	</ui:define>
+</ui:composition>

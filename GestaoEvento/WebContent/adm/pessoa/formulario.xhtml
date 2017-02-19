@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:p="http://primefaces.org/ui"
+	template="../../template/template_padrao.xhtml">
+
+	<ui:define name="conteudo">
+
+		<h:form class="form-horizontal" role="form" prependId="false">
+			<div class="panel panel-default">
+				<div class="panel-heading text-left">
+					<h4>Pessoas</h4>
+				</div>
+				<div class="panel-body">
+					<t:saveState value="#{pessoaBean.pessoa}" />
+
+					<div class="col-sm-12">
+						<label class="col-sm-2">Nome</label>
+						<div class="col-sm-4">
+							<p:inputText id="nome" value="#{pessoaBean.pessoa.nome}"
+								label="Nome" required="true"
+								validatorMessage="Informe no Máximo 100 caractéres"
+								styleClass="form-control">
+								<p:watermark for="nome" value="Nome" id="watermarknome" />
+								<f:validateLength maximum="100"></f:validateLength>
+							</p:inputText>
+						</div>
+
+						<label class="col-sm-2">Cargo</label>
+						<div class="col-sm-4">
+							<p:inputText id="cargo" value="#{pessoaBean.pessoa.cargo}"
+								label="Cargo" required="true"
+								validatorMessage="Informe no Máximo 100 caractéres"
+								styleClass="form-control">
+								<p:watermark for="cargo" value="Cargo" id="watermarkcargo" />
+								<f:validateLength maximum="100"></f:validateLength>
+							</p:inputText>
+						</div>
+						
+						<label class="col-sm-2">Ativo? </label>
+						<div class="col-sm-4">
+							<div class="checkbox">
+								<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-2">
+							<h:commandButton value="Voltar" class="btn btn-success"
+								action="list" immediate="true" />
+						</div>
+						<div class="col-sm-2 ">
+							<h:commandButton value="Salvar" action="#{pessoaBean.save}"
+								class="btn btn-default">
+								<f:ajax execute="@form" render=":mensagens" />
+								<f:param value="#{pessoa.id}" name="id" />
+							</h:commandButton>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

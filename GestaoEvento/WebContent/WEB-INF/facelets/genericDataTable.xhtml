@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core">
+<ui:component>
+
+			
+
+
+        <h:form id="form_toolbar">
+        
+        	
+				<div class="ferramentasConsulta">
+					<h:commandButton value="Listar" immediate="true"
+						action="#{empresaBean.list}">
+						<f:ajax render="tabela" />
+					</h:commandButton>
+        </div>
+        
+                <p:toolbar>
+                        <p:toolbarGroup id="toolbar_registro" align="left">
+                                <p:commandButton id="btn_novo" value="Novo Cadastro" action="#{facesUtils.stringParam(telaRetorno)}" ajax="false" icon="btn_incluir" />
+                        </p:toolbarGroup>
+                </p:toolbar>
+       
+                <p:dataTable value="#{controller.empresas}" id="tabela"
+                        rowKey="#{obj.id}" selection="#{controller.empresa}" 
+                        var="obj" paginator="true" rows="20" filterEvent="enter"
+                        paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                        rowsPerPageTemplate="20,40,50" selectionMode="single"
+                        emptyMessage="Nenhum registro encontrado!" paginatorPosition="bottom">
+
+                        <c:forEach var="header" items="#{headers}" varStatus="x">
+                                <c:forEach var="body" items="#{bodys}" varStatus="y">
+                                        <c:if test="#{x.index eq y.index}">
+                                                <p:column headerText="#{header}" sortBy="#{obj[body]}" filterBy="#{obj[body]}">
+                                                        <h:outputText escape="false" value="#{obj[body]}" />  
+                                                </p:column>  
+                                        </c:if>
+                                </c:forEach>                                                                                    
+                        </c:forEach>
+                                        
+                        <p:column headerText="Alterar" style="width: 15px; text-align: center;">                                
+                                <p:commandButton id="btn_alterar" style="height: 18px; width: 18px;" icon="btn_alterar" action="#{facesUtils.stringParam(telaRetorno)}" ajax="false" >
+                                        <f:setPropertyActionListener value="#{obj}" target="#{controller.carregaObjetoParaMemoria}" />
+                                </p:commandButton>
+                        </p:column>
+                        
+                        <p:column headerText="Excluir" style="width: 15px; text-align: center;">
+                                <p:commandButton id="btn_excluir" style="height: 18px; width: 18px;" icon="btn_excluir" oncomplete="wdRemove.show()">
+                                        <f:setPropertyActionListener value="#{obj}" target="#{controller.objeto}" />
+                                </p:commandButton>
+                        </p:column>
+                </p:dataTable>
+        </h:form>
+
+        <p:confirmDialog widgetVar="wdRemove" header="Remover" message="Confirma a exclusao?" appendToBody="true">
+                <h:form id="removeForm">
+                        <p:commandButton id="btn_confirma" value="Sim" actionListener="#{controller.excluir()}" ajax="false" update=":form_registro" oncomplete="wdRemove.hide()" icon="btn_confirma" />
+                        <p:commandButton id="btn_cancela" value="Não" onclick="wdRemove.hide()" icon="btn_cancela" />
+                </h:form>
+        </p:confirmDialog>
+</ui:component>
+</html>
