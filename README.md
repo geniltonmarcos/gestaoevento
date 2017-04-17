@@ -1,4 +1,4 @@
-# gestaoevento
+# Getão de Enventos
 
 Sistema para gestão de eventos utilizando java e bd Postgre.
 
